@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mensagem de Carinho</title>
+
+
+<style>
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    font-family: Arial, sans-serif;
+
+
+    /* =========================
+       IMAGEM DE FUNDO
+    ========================= */
+
+    background-image:
+
+        linear-gradient(
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.25)
+        ),
+
+        url("Fundo.png");
+
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+}
+
+
+/* =========================
+   CARTÃO PRINCIPAL
+========================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: #ffffff;
+
+    padding: 32px 24px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.15);
+
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+h1 {
+
+    margin: 0 0 10px;
+
+    font-size: 25px;
+
+    color: #8b6f61;
+
+}
+
+
+/* =========================
+   TEXTO DE INTRODUÇÃO
+========================= */
+
+.subtitle {
+
+    margin-bottom: 25px;
+
+    color: #777;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================
+   TEXTO "SEU NOME"
+========================= */
+
+.label {
+
+    display: block;
+
+    text-align: left;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    color: #6f594c;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================
+   CAMPO DO NOME
+========================= */
+
+input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    margin-bottom: 25px;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+input:focus {
+
+    border-color: #b89b89;
+
+}
+
+
+/* =========================
+   TEXTO DE ESCOLHA
+========================= */
+
+.choose {
+
+    font-size: 15px;
+
+    color: #777;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    margin-bottom: 12px;
+
+    transition: 0.2s;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+.btn:hover {
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================
+   BOTÃO DA NOIVA
+========================= */
+
+.noiva {
+
+    background: #f5e7e8;
+
+    color: #805b60;
+
+}
+
+
+/* =========================
+   BOTÃO DO NOIVO
+========================= */
+
+.noivo {
+
+    background: #e8edf3;
+
+    color: #596b7e;
+
+}
+
+
+/* =========================
+   EFEITO AO CLICAR
+========================= */
+
+.btn:active {
+
+    transform: scale(0.98);
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     CARTÃO
+========================= -->
+
+<div class="container">
+
+
+    <!-- TÍTULO -->
+
+    <h1>
+        💌 Mensagem de carinho
+    </h1>
+
+
+    <!-- DESCRIÇÃO -->
+
+    <div class="subtitle">
+
+        Deixe uma mensagem especial para os noivos. ❤️
+
+    </div>
+
+
+    <!-- NOME DO CONVIDADO -->
+
+    <label
+        class="label"
+        for="guestName"
+    >
+
+        Seu nome
+
+    </label>
+
+
+    <input
+
+        type="text"
+
+        id="guestName"
+
+        placeholder="Digite o seu nome"
+
+        autocomplete="name"
+
+    >
+
+
+    <!-- ESCOLHA -->
+
+    <div class="choose">
+
+        Para quem deseja enviar?
+
+    </div>
+
+
+    <!-- BOTÃO NOIVA -->
+
+    <button
+
+        class="btn noiva"
+
+        onclick="sendMessage('noiva')"
+
+    >
+
+        💕 Enviar para a Noiva
+
+    </button>
+
+
+    <!-- BOTÃO NOIVO -->
+
+    <button
+
+        class="btn noivo"
+
+        onclick="sendMessage('noivo')"
+
+    >
+
+        🤵 Enviar para o Noivo
+
+    </button>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   NÚMEROS DOS NOIVOS
+========================= */
+
+const numeroNoivo = "244933091670";
+
+const numeroNoiva = "244922713439";
+
+
+
+/* =========================
+   FUNÇÃO DE ENVIO
+========================= */
+
+function sendMessage(destino) {
+
+
+    // Pega o campo do nome
+
+    const input =
+        document.getElementById("guestName");
+
+
+    // Pega o nome digitado
+
+    const nome =
+        input.value.trim();
+
+
+
+    /* =========================
+       VERIFICA SE O NOME FOI PREENCHIDO
+    ========================= */
+
+    if (nome === "") {
+
+        alert(
+            "Por favor, digite o seu nome."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+
+    /* =========================
+       ESCOLHE O DESTINO
+    ========================= */
+
+    let numero;
+
+
+    if (destino === "noiva") {
+
+        numero = numeroNoiva;
+
+    }
+
+    else {
+
+        numero = numeroNoivo;
+
+    }
+
+
+
+    /* =========================
+       MENSAGEM AUTOMÁTICA
+    ========================= */
+
+    const mensagem =
+
+        `Olá! Sou ${nome}. 💕\n\n` +
+
+        `Parabéns pelo noivado e muito obrigada pelo convite! ` +
+
+        `Fiquei muito feliz por fazer parte deste momento tão especial. ` +
+
+        `Desejo-vos muitas felicidades! 🥰✨`;
+
+
+
+    /* =========================
+       CRIA O LINK DO WHATSAPP
+    ========================= */
+
+    const link =
+
+        `https://wa.me/${numero}?text=` +
+
+        encodeURIComponent(mensagem);
+
+
+
+    /* =========================
+       ABRE O WHATSAPP
+    ========================= */
+
+    window.location.href = link;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
